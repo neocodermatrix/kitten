@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html ng-app="kittyApp">
+	<head>
+		<meta charset="utf-8">
+
+		<title>An HTML Page</title>
+
+		<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+		
+		<script src="js/angular.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/KittiesController.js"></script>
+	</head>
+
+	<body>
+
+	<h1>Kitty Adoption</h1>
+	<main id="container" ng-controller="KittyController as kitty">
+
+	<div class="listContainers">
+
+	<div class="left-container">
+		<ul>
+			<li class="dashed" ng-repeat="cat in kitty.kittyList | filter: {adopted: false}">
+				<p>My name is {{ cat.catName }}</p>
+				<p>I am {{ cat.monthsOld }} years old</p>
+				<p>I am a {{ cat.gender }}</p>
+				<img ng-src="{{cat.image}}">
+				<p>Adopted? </p><input type="checkbox" ng-model="cat.adopted">
+			</li>
+		</ul>
+	</div>
+
+	<div class="right-container">
+		<ul>
+			<li class="dashed" ng-repeat="cat in kitty.kittyList | filter: {adopted: true}">
+				<p>My name is {{ cat.catName }}</p>
+				<p>I am {{ cat.monthsOld }} years old</p>
+				<p>I am a {{ cat.gender }}</p>
+				<img ng-src="{{cat.image}}">
+				<input type="checkbox" ng-model="cat.adopted">
+			</li>
+		</ul>
+	</div>
+	</div>
+<!-- 			<div class="left-container">
+				<div class="dashed" ng-repeat="cat in kitty.kittyList">
+					<p>My name is {{cat.catName}}</p>
+					<p>I am {{cat.monthsOld}}</p>
+					<p>I am a {{cat.gender}}</p>
+						<div>
+						<img ng-src="{{cat.image}}">
+						</div>
+			
+				<input type="checkbox" value="kitty" ng-model="cat.adopted">
+				</div>
+			</div>
+
+			<div class="right-container">right
+
+			</div> -->
+		
+
+	</main>
+
+</body>
+</html>
